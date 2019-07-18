@@ -11,18 +11,9 @@ const mongoose = require("mongoose");
 
 const uri =
   "mongodb+srv://luis123:luis1234@nodeshop-4zovz.mongodb.net/test?retryWrites=true&w=majority";
-mongoose.connect(
-  uri,
-  {
-    useNewUrlParser: true
-  }
-  // function(err, client) {
-  //   if (err) {
-  //     console.log("Error occurred while connecting to MongoDB Atlas...\n", err);
-  //   }
-  //   console.log("Connected...");
-  // }
-);
+mongoose.connect(uri, {
+  useNewUrlParser: true
+});
 
 app.use(morgan("dev"));
 app.use(
