@@ -2,24 +2,27 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 
 const productRoutes = require("./api/routes/products");
 const ordersRoutes = require("./api/routes/orders");
-// const uri =
-//   "mongodb+srv://luis123:luis1234@test-cluster-4zovz.mongodb.net/test?retryWrites=true&w=majority";
-
-// mongoose.connect(uri);
 
 const MongoClient = require("mongodb").MongoClient;
+const mongoose = require("mongoose");
+
 const uri =
-  "mongodb+srv://luis123:luis1234@test-cluster-4zovz.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+  "mongodb+srv://luis123:luis1234@nodeshop-4zovz.mongodb.net/test?retryWrites=true&w=majority";
+mongoose.connect(
+  uri,
+  {
+    useNewUrlParser: true
+  }
+  // function(err, client) {
+  //   if (err) {
+  //     console.log("Error occurred while connecting to MongoDB Atlas...\n", err);
+  //   }
+  //   console.log("Connected...");
+  // }
+);
 
 app.use(morgan("dev"));
 app.use(
