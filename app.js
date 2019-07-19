@@ -2,12 +2,10 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const productRoutes = require("./api/routes/products");
 const ordersRoutes = require("./api/routes/orders");
-
-const MongoClient = require("mongodb").MongoClient;
-const mongoose = require("mongoose");
 
 const uri =
   "mongodb+srv://luis123:luis1234@nodeshop-4zovz.mongodb.net/test?retryWrites=true&w=majority";
