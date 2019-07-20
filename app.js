@@ -13,6 +13,8 @@ mongoose.connect(uri, {
   useNewUrlParser: true
 });
 
+mongoose.Promise = global.Promise;
+
 app.use(morgan("dev"));
 app.use(
   bodyParser.urlencoded({

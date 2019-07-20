@@ -69,9 +69,15 @@ router.get("/:productId", (req, res, next) => {
   Product.findById(id)
     .exec()
     .then(doc => {
-      console.log(doc);
+      console.log("From database", doc);
       if (doc) {
-        res.status(200).json(doc);
+        res.status(200).json({
+          poduct: doc,
+          request: {
+            type: "GET",
+            url: "http://localhost:3000/products"
+          }
+        });
       } else {
         res.status(404).json({ message: "No valid entry" });
       }
@@ -119,8 +125,12 @@ router.delete("/:productId", (req, res, next) => {
     .exec()
     .then(result => {
       res.status(200).json({
-        _id: result._id,
-        message: "Product deleted"
+        message: "Product deleted",
+        request: {
+          type: "POST",
+          url: "http://localhost:3000/products",
+          body: { name: "String", price: "Number" }
+        }
       });
     })
     .catch(err => {
