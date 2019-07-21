@@ -1,2 +1,2 @@
 # node-shop
-Node API project to manage ecomm type database: Mongoosedb Atlas, NodeJS, Express
+REST API w/ Mongoosedb Atlas, NodeJS, Express
