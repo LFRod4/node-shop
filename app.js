@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 const productRoutes = require("./api/routes/products");
 const ordersRoutes = require("./api/routes/orders");
+const userRoutes = require("./api/routes/user");
 
 const uri =
   "mongodb+srv://luis123:luis1234@nodeshop-4zovz.mongodb.net/test?retryWrites=true&w=majority";
@@ -16,6 +17,7 @@ mongoose.connect(uri, {
 mongoose.Promise = global.Promise;
 
 app.use(morgan("dev"));
+app.use("/uploads", express.static("uploads"));
 app.use(
   bodyParser.urlencoded({
     extended: false
@@ -39,6 +41,7 @@ app.use((req, res, next) => {
 //Routes that handle requests
 app.use("/products", productRoutes);
 app.use("/orders", ordersRoutes);
+app.use("/user", userRoutes);
 
 app.use((req, res, next) => {
   const error = new Error("Not found");
